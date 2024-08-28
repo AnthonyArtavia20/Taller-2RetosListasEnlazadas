@@ -5,9 +5,9 @@ namespace RetosListasEnlazadas
 {
     public class DoubleLinkedListNodo
     {
-        public DoubleLinkedListNodo? siguiente;
-        public DoubleLinkedListNodo? Anterior;
-        public int valor; //El valor que contiene el Nodo-
+        public DoubleLinkedListNodo? siguiente {get; set;}
+        public DoubleLinkedListNodo? Anterior {get; set;}
+        public int valor {get; set;} //El valor que contiene el Nodo-
 
         public DoubleLinkedListNodo(int valor)
         {
