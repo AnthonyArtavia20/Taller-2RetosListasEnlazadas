@@ -41,8 +41,34 @@ namespace RetosListasEnlazadas
 
         public int DeleteLast()
         {
-            //Implementación futura
-            return 0; // Placeholder
+            if (head == null)
+            {
+                throw new InvalidOperationException("La lista está vacía"); //Pues si no tiene cabeza, menos cuerpo.
+            }
+
+            if (head.siguiente == null) //Significa que el siguiente puede ser null
+            {
+                int valorNodoEliminado = head.valor; //Almacenamos el valor del número que tiene el nodo.
+                head = null; //Cabeza actual va a ser nulo
+                ultimo = null; //Referencia a último va a ser nulo.
+                contador--; //Decrementamos la cantidad de elementos en la lista según el contador.
+                return valorNodoEliminado;
+            }
+
+            DoubleLinkedListNodo nodoActual = head; //Almacenamos temporalmente el valor de la cabeza
+            //de lo contrario si iteraramos en la referencia actual, la referencia se movería,
+            //moviendo el resto de referencias también.
+            while (head.siguiente.siguiente != null) //Iteramos con una copia de la referencia de head
+            {
+                nodoActual = nodoActual.siguiente;
+            }
+
+            int valorNodoEliminadoUltimo = nodoActual.siguiente.valor; //Almacenamos el valor del nodo a eliminar.
+            nodoActual.siguiente = null; //Eliminamos la referencia al último nodo.
+            ultimo = nodoActual; //Entonces el nodo anterior que antes tenía un elemento después, ahora al no tener nada, ese nodo, pasa a ser le último.
+            contador--; //Decrementamos el contador de elementos en la lista.
+
+            return valorNodoEliminadoUltimo; //Devolvemos el valor del nodo que se eliminó.
         }
 
         public bool DeleteValue(int value)
