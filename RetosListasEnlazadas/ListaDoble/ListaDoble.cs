@@ -6,14 +6,12 @@ namespace RetosListasEnlazadas
     {
         private DoubleLinkedListNodo? head {set;get;} //Primer elemento
         private DoubleLinkedListNodo? ultimo {set;get;} // tail
-        private DoubleLinkedListNodo? middle {set;get;} //Nodo central de la lista.
-        public  int contador; //Para llevar la cuenta de cuantos elementos  hay en la linkedList.
+        private  int contador; //Para llevar la cuenta de cuantos elementos  hay en la linkedList.
         
         public ListaDobleEnlazada() //Inicializamos las referencias a null.
         {
             head = null;
             ultimo = null;
-            middle = null;
         }
 
         public void InsertInOrder(int value)
@@ -22,7 +20,7 @@ namespace RetosListasEnlazadas
 
             if (head == null)
             {
-                head = ultimo = middle = nuevoNodoACrear; //La cabeza al ser null, quiere decir que no hay elemento en la lista
+                head = ultimo = nuevoNodoACrear; //La cabeza al ser null, quiere decir que no hay elemento en la lista
                 //lo que hace que el nuevo noodo sea tanto el primero, como el último, como el central, entonces el nuevo nodo será todo eso.
                 
             }
@@ -54,6 +52,8 @@ namespace RetosListasEnlazadas
                     NodoActual.Anterior = nuevoNodoACrear; //Por último terminamos de enlazar la refrencia del anterior al nodo actual como el nuevo nodo creado.
                 }
             }
+
+            contador++; // Aumentar el contador de elementos
         }
 
         public int DeleteFirst()
@@ -164,15 +164,20 @@ namespace RetosListasEnlazadas
             {
                 throw new InvalidOperationException("La lista está vacía.");
             }
-            int IndiceMedio = (contador - 1) /2;
+
+            // Si el contador es par, se ajusta para redondear hacia arriba
+            int IndiceMedio = (contador + 1) / 2;
+
             DoubleLinkedListNodo? NodoActual = head;
             
-            for (int i = 0; i < IndiceMedio; i++)
+            for (int i = 0; i < IndiceMedio -1; i++) // Menos 1 para poder 
             {
                 if (NodoActual == null)return -1; //Para evitar null exeption
                 NodoActual = NodoActual.siguiente;
             }
             if (NodoActual == null)return -1; //Para evitar null exeption
+            Console.WriteLine("El centro de la lista es: ");
+            Console.WriteLine(NodoActual.valor);
             return NodoActual.valor;
         }
 
@@ -187,9 +192,28 @@ namespace RetosListasEnlazadas
 
             while (ActualAImprimir != null)
             {
-                Console.WriteLine(ActualAImprimir);
+                Console.WriteLine(ActualAImprimir.valor);
                 ActualAImprimir = ActualAImprimir.siguiente;
             }
+        }
+
+        public void InvertirLista()
+        {
+            DoubleLinkedListNodo? actual = head;
+            DoubleLinkedListNodo? temporal = null;
+
+            while (actual != null) //Mantenemos este ciclo hasta llegar a null, cuando se llegue a null -> "ver el intecambio de head y último"
+            {
+                temporal = actual.siguiente; //El siguiente elemento en la lista se designa como temporal
+                actual.siguiente = actual.Anterior; //"Invetirmos la referencia del siguiente (de siguiente a anterior).
+                actual.Anterior = temporal;//Y luego invertirmos la referencia del anterior (de anterior a siguiente).
+                actual = temporal; //Posterior decimos que el actual va a ser el anterior, es decir, el elemento siguiente del nodo "actual" original.
+            }
+
+            //Intercambio de head y último por medio de una variable temporal
+            temporal = head; //Guardamos el nodo head en temporal
+            head = ultimo; // decimos que la cabeza va a ser "último" osea la invertimos
+            ultimo = temporal; // y luego tambien invertimos "último" es decir, invertimos con lo que fué head.
         }
     }
 }
