@@ -23,14 +23,18 @@ public class Program
 
         //lista1.GetMiddle();
 
-        lista1.InsertInOrder(1);
-        lista1.InsertInOrder(2);
-        lista1.InsertInOrder(3);
+        lista1.InsertInOrder(5);
+        lista1.InsertInOrder(6);
+        lista1.InsertInOrder(7);
+        lista1.InsertInOrder(8);
         
-        lista2.InsertInOrder(4);
-        lista2.InsertInOrder(5);
-        lista2.InsertInOrder(6);
+        lista2.InsertInOrder(1);
+        lista2.InsertInOrder(2);
+        lista2.InsertInOrder(3);
 
-        
+        lista1.MergeSorted(lista1,lista2,SortDirection.Ascendente);
+
+        lista1.ImprimirLista();
+        lista1.GetMiddle();
     }
 }

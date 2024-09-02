@@ -27,6 +27,7 @@ namespace RetosListasEnlazadas
             else
             {
                 DoubleLinkedListNodo? NodoActual = head;
+
                 while (NodoActual != null && NodoActual.valor < value)
                 {
                     NodoActual = NodoActual.siguiente;
@@ -103,6 +104,8 @@ namespace RetosListasEnlazadas
             {
                 nodoActual = nodoActual.siguiente;
             }
+            
+            if (nodoActual.siguiente == null) return -1; // para evitar el mensaje de null exeption.
 
             int valorNodoEliminadoUltimo = nodoActual.siguiente.valor; //Almacenamos el valor del nodo a eliminar.
             nodoActual.siguiente = null; //Eliminamos la referencia al último nodo.
@@ -150,6 +153,8 @@ namespace RetosListasEnlazadas
             }
             else //Si no es ningún nodo externo, entonces nos "saltamos" el nodo actual.
             {
+                if (NodoActual.Anterior == null || NodoActual.siguiente == null) return false; //Para evitar referencias null.
+
                 NodoActual.Anterior.siguiente = NodoActual.siguiente;
                 NodoActual.siguiente.Anterior = NodoActual.Anterior;
             }
@@ -170,7 +175,7 @@ namespace RetosListasEnlazadas
 
             DoubleLinkedListNodo? NodoActual = head;
             
-            for (int i = 0; i < IndiceMedio -1; i++) // Menos 1 para poder 
+            for (int i = 1; i < IndiceMedio; i++) // Menos 1 para poder 
             {
                 if (NodoActual == null)return -1; //Para evitar null exeption
                 NodoActual = NodoActual.siguiente;
@@ -206,6 +211,8 @@ namespace RetosListasEnlazadas
             //Hacemos un ciclo while que constantemente recorra ambas listas pero que por separado verifique y separe los elementos
             while (nodoActualListaA != null & nodoActualListaB != null)
             {
+                if (nodoActualListaA == null || nodoActualListaB == null) return; // Para evitar un error de null.
+
                 if(nodoActualListaA.valor <= nodoActualListaB.valor)
                 {
                     listaTemporal.InsertInOrder(nodoActualListaA.valor);
