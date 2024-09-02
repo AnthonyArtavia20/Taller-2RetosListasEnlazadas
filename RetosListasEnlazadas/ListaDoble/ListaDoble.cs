@@ -181,9 +181,73 @@ namespace RetosListasEnlazadas
             return NodoActual.valor;
         }
 
-        public void MergeSorted(IList listA, IList listB, SortDirection direction)
+        public void MergeSorted(ListaDobleEnlazada listA, ListaDobleEnlazada listB, SortDirection direction)
         {
-            //Implementación futura
+            //Mezclar lista B en lista A
+
+            //Comprobamos que ambas listas existan
+            if (listA == null)
+            {
+                throw new ArgumentNullException("La lista1 es nula, no se puede mezclar");
+            }
+
+            if (listB == null)
+            {
+                throw new ArgumentNullException("La lista2 es nula, no se puede mezclar");
+            }
+
+            //Sacamos las referencias de las cabezas de ambas listas, esto con el fin de poder avanzar hasta el final de cada una.
+            DoubleLinkedListNodo? nodoActualListaA = listA.head;
+            DoubleLinkedListNodo? nodoActualListaB = listB.head;
+
+            //Creamos una lista temporal para poder ir agregando los elementos ordenanos(Se hace así para tener más versatilidad a la hora de hacer ascendente o descendente)
+            ListaDobleEnlazada? listaTemporal = new ListaDobleEnlazada();
+
+            //Hacemos un ciclo while que constantemente recorra ambas listas pero que por separado verifique y separe los elementos
+            while (nodoActualListaA != null & nodoActualListaB != null)
+            {
+                if(nodoActualListaA.valor <= nodoActualListaB.valor)
+                {
+                    listaTemporal.InsertInOrder(nodoActualListaA.valor);
+                    nodoActualListaA = nodoActualListaA.siguiente;
+                }
+                else
+                {
+                    listaTemporal.InsertInOrder(nodoActualListaB.valor);
+                    nodoActualListaB = nodoActualListaB.siguiente;
+                }
+            }
+
+            if (direction == SortDirection.Descendente) // En caso de que se quiera descendente, luego de que se ordena, se invierte.
+            {  
+                listaTemporal.InvertirLista();
+            }
+
+            //En caso de que una de las listas sea más larga que la otra, es decir el proceso termine antes, entonces agregamos el resto de elementos restantes.
+            while (nodoActualListaA != null)
+            {
+                listaTemporal.InsertInOrder(nodoActualListaA.valor);
+                nodoActualListaA = nodoActualListaA.siguiente;
+            }
+            while (nodoActualListaB != null)
+            {
+                listaTemporal.InsertInOrder(nodoActualListaB.valor);
+                nodoActualListaB = nodoActualListaB.siguiente;
+            }
+
+            listA.head = null; //Limpiamos la lista A antes de pasarle todos los elementos ya mezclados y ordenados.
+            DoubleLinkedListNodo? nodoActualDeLaListaTemporal = listaTemporal.head;
+
+            while (nodoActualDeLaListaTemporal != null)
+            {
+                listA.InsertInOrder(nodoActualDeLaListaTemporal.valor);
+                nodoActualDeLaListaTemporal = nodoActualDeLaListaTemporal.siguiente;
+            }
+
+            //reasignamos las referencias para la lista 1
+            listA.head = listaTemporal.head;
+            listA.ultimo = listaTemporal.ultimo;
+            listA.contador = listaTemporal.contador;
         }
 
         public void ImprimirLista()
@@ -199,21 +263,23 @@ namespace RetosListasEnlazadas
 
         public void InvertirLista()
         {
-            DoubleLinkedListNodo? actual = head;
-            DoubleLinkedListNodo? temporal = null;
+            DoubleLinkedListNodo? actual = head; // creamos un nodo que almacene la referencia de head para no alterarla.
+            DoubleLinkedListNodo? temporal = null; //creamos un nodo temporal que va a servir para poder almacenar referencias.
 
             while (actual != null) //Mantenemos este ciclo hasta llegar a null, cuando se llegue a null -> "ver el intecambio de head y último"
             {
-                temporal = actual.siguiente; //El siguiente elemento en la lista se designa como temporal
+                temporal = actual.siguiente; //Se guarda la referencia al siguiente nodo, es decir, se designa el siguiente como temporal.
                 actual.siguiente = actual.Anterior; //"Invetirmos la referencia del siguiente (de siguiente a anterior).
                 actual.Anterior = temporal;//Y luego invertirmos la referencia del anterior (de anterior a siguiente).
                 actual = temporal; //Posterior decimos que el actual va a ser el anterior, es decir, el elemento siguiente del nodo "actual" original.
             }
 
-            //Intercambio de head y último por medio de una variable temporal
-            temporal = head; //Guardamos el nodo head en temporal
+            //Intercambio de head y último por medio de la variable temporal(la cual queda como última en la lista al haber llegado hasta el final)
+            temporal = head; //guardamos la referencia original de head, esto con el proposito de luego decir que esta head va a ser el último.
             head = ultimo; // decimos que la cabeza va a ser "último" osea la invertimos
-            ultimo = temporal; // y luego tambien invertimos "último" es decir, invertimos con lo que fué head.
+            ultimo = temporal; // y el último es el antiguio primer nodo.
+
+            //Es decir, intercambiamos head por último y último por head, todo mediante una variable temporal para no perder la referencia original de gente yluego igualarla.
         }
     }
 }

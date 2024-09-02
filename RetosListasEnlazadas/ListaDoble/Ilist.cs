@@ -7,6 +7,6 @@ namespace RetosListasEnlazadas
         int DeleteLast();
         bool DeleteValue(int value);
         int GetMiddle();
-        void MergeSorted(IList listA, IList listB, SortDirection direction);
+        void MergeSorted(ListaDobleEnlazada listA, ListaDobleEnlazada listB, SortDirection direction);
     }
 }
