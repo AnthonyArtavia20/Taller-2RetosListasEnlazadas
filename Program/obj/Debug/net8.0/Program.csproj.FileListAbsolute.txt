@@ -16,3 +16,4 @@ C:\Users\Anthony\Desktop\Código Resolución\Program\obj\Debug\net8.0\refint\Pro
 C:\Users\Anthony\Desktop\Código Resolución\Program\obj\Debug\net8.0\Program.pdb
 C:\Users\Anthony\Desktop\Código Resolución\Program\obj\Debug\net8.0\Program.genruntimeconfig.cache
 C:\Users\Anthony\Desktop\Código Resolución\Program\obj\Debug\net8.0\ref\Program.dll
+C:\Users\Anthony\Desktop\Código Resolución\Program\obj\Debug\net8.0\Program.sourcelink.json

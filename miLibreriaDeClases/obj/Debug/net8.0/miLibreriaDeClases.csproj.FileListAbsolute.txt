@@ -9,3 +9,4 @@ C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\obj\Debug\net8.0
 C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\obj\Debug\net8.0\refint\miLibreriaDeClases.dll
 C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\obj\Debug\net8.0\miLibreriaDeClases.pdb
 C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\obj\Debug\net8.0\ref\miLibreriaDeClases.dll
+C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\obj\Debug\net8.0\miLibreriaDeClases.sourcelink.json
