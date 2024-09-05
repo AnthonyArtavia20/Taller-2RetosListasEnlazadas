@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Anthony\\Desktop\\Código Resolución\\Program\\Program.csproj",
+      "projectUniqueName": "C:\\Users\\Anthony\\OneDrive - Estudiantes ITCR\\TEC\\2024\\Segundo semestre\\Algoritmos y Estructuras de Datos 1\\Tareas o talleres\\Evaluación 2 - Retos Listas Enlazadas\\Código Resolución\\Program\\Program.csproj",
       "projectName": "Program",
-      "projectPath": "C:\\Users\\Anthony\\Desktop\\Código Resolución\\Program\\Program.csproj",
+      "projectPath": "C:\\Users\\Anthony\\OneDrive - Estudiantes ITCR\\TEC\\2024\\Segundo semestre\\Algoritmos y Estructuras de Datos 1\\Tareas o talleres\\Evaluación 2 - Retos Listas Enlazadas\\Código Resolución\\Program\\Program.csproj",
       "packagesPath": "C:\\Users\\Anthony\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Anthony\\Desktop\\Código Resolución\\Program\\obj\\",
+      "outputPath": "C:\\Users\\Anthony\\OneDrive - Estudiantes ITCR\\TEC\\2024\\Segundo semestre\\Algoritmos y Estructuras de Datos 1\\Tareas o talleres\\Evaluación 2 - Retos Listas Enlazadas\\Código Resolución\\Program\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Anthony\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -51,8 +51,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Anthony\\Desktop\\Código Resolución\\miLibreriaDeClases\\miLibreriaDeClases.csproj": {
-              "projectPath": "C:\\Users\\Anthony\\Desktop\\Código Resolución\\miLibreriaDeClases\\miLibreriaDeClases.csproj"
+            "C:\\Users\\Anthony\\OneDrive - Estudiantes ITCR\\TEC\\2024\\Segundo semestre\\Algoritmos y Estructuras de Datos 1\\Tareas o talleres\\Evaluación 2 - Retos Listas Enlazadas\\Código Resolución\\miLibreriaDeClases\\miLibreriaDeClases.csproj": {
+              "projectPath": "C:\\Users\\Anthony\\OneDrive - Estudiantes ITCR\\TEC\\2024\\Segundo semestre\\Algoritmos y Estructuras de Datos 1\\Tareas o talleres\\Evaluación 2 - Retos Listas Enlazadas\\Código Resolución\\miLibreriaDeClases\\miLibreriaDeClases.csproj"
             }
           }
         }
