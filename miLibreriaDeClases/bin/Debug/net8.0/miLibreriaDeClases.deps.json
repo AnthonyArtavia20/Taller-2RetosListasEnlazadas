@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "miLibreriaDeClases/1.0.0": {
+        "runtime": {
+          "miLibreriaDeClases.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "miLibreriaDeClases/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

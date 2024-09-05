@@ -1,0 +1,11 @@
+C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\bin\Debug\net8.0\miLibreriaDeClases.deps.json
+C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\bin\Debug\net8.0\miLibreriaDeClases.dll
+C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\bin\Debug\net8.0\miLibreriaDeClases.pdb
+C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\obj\Debug\net8.0\miLibreriaDeClases.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\obj\Debug\net8.0\miLibreriaDeClases.AssemblyInfoInputs.cache
+C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\obj\Debug\net8.0\miLibreriaDeClases.AssemblyInfo.cs
+C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\obj\Debug\net8.0\miLibreriaDeClases.csproj.CoreCompileInputs.cache
+C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\obj\Debug\net8.0\miLibreriaDeClases.dll
+C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\obj\Debug\net8.0\refint\miLibreriaDeClases.dll
+C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\obj\Debug\net8.0\miLibreriaDeClases.pdb
+C:\Users\Anthony\Desktop\Código Resolución\miLibreriaDeClases\obj\Debug\net8.0\ref\miLibreriaDeClases.dll
