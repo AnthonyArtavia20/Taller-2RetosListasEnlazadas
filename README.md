@@ -30,11 +30,11 @@ CarpetaPrincipal
 │   └── UnitTest1.cs
 │
 └── miLibreriaDeClases
-│    	├── DoubleNodo.cs
- │   	├── IList.cs
-  │  	├── ListaDoble.cs
+│  ├── DoubleNodo.cs
+│  ├── IList.cs
+│  ├── ListaDoble.cs
 │		├── SortDirection.cs
-│    	└── miLibreriaDeClases.cs
+│  └── miLibreriaDeClases.cs
 ```
 
 - `Program`: Contiene el programa ejecutable principal.
