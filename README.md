@@ -22,20 +22,32 @@ Esto  ejecuta el archivo que contiene las pruebas unitarias y solo puede ser eje
 El objetivo principal de este programa radica en mejorar las habilidades de resolución de problemas con estructuras de datos tales como Listas enlazadas, además de la implementación de algunos métodos útilies para la misma resolución de los problemas citados en la descripción de este proyecto.
 
 CarpetaPrincipal
+
 │
+
 ├── Program
+
 │   └── program.cs
+
 │
+
 ├── ProgramTest
+
 │   └── UnitTest1.cs
+
 │
+
 └── miLibreriaDeClases
+
 │  ├── DoubleNodo.cs
+
 │  ├── IList.cs
+
 │  ├── ListaDoble.cs
+
 │		├── SortDirection.cs
+
 │  └── miLibreriaDeClases.cs
-```
 
 - `Program`: Contiene el programa ejecutable principal.
 - `ProgramTest`: Contiene las pruebas unitarias del proyecto.
