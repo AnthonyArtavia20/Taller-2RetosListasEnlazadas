@@ -5,9 +5,8 @@ namespace miLibreriaDeClases
     public class ListaDobleEnlazada : IList
     {
         private DoubleLinkedListNodo? head {set;get;} //Primer elemento
-        private DoubleLinkedListNodo? ultimo {set;get;} // tail
+        private DoubleLinkedListNodo? ultimo {set;get;} // Significa la referencia hacía el último elemento.
         private  int contador; //Para llevar la cuenta de cuantos elementos  hay en la linkedList.
-        
         public ListaDobleEnlazada() //Inicializamos las referencias a null.
         {
             head = null;
@@ -21,25 +20,27 @@ namespace miLibreriaDeClases
             if (head == null)
             {
                 head = ultimo = nuevoNodoACrear; //La cabeza al ser null, quiere decir que no hay elemento en la lista
-                //lo que hace que el nuevo noodo sea tanto el primero, como el último, como el central, entonces el nuevo nodo será todo eso.
-                
+                //lo que hace que el nuevo nodo sea tanto el primero, como el último, como el central, entonces el nuevo nodo será todo eso.
             }
             else
             {
-                DoubleLinkedListNodo? NodoActual = head;
+                DoubleLinkedListNodo? NodoActual = head; //Creamos una copia del valor del elemento que está de primero
+                                                        //esto para no perder la referencia de la cabeza al iterar.
 
-                while (NodoActual != null && NodoActual.valor < value)
-                {
+                while (NodoActual != null && NodoActual.valor < value) //Avanzamos hasta que el valora  insertar
+                {                                             //encuentre a alguien mayor al frente, posterior será insertado ahí.
                     NodoActual = NodoActual.siguiente;
                 }
 
                 if (NodoActual == null && ultimo != null) //Se recorrió toda la lista. entonces insertamos al final.
                 {
+                    //Enlazamos las referencias:
                     ultimo.siguiente = nuevoNodoACrear;
                     nuevoNodoACrear.Anterior = ultimo;
                     ultimo = nuevoNodoACrear;
+                    //Con esto logramos insertar el nuevo nodo
                 }
-                else if (NodoActual.Anterior == null) //En el caso de que se tenga que insetar al frente
+                else if (NodoActual.Anterior == null) //En el caso de que se tenga que insertar al frente
                 {
                     nuevoNodoACrear.siguiente = head;
                     head.Anterior = nuevoNodoACrear;
@@ -53,7 +54,6 @@ namespace miLibreriaDeClases
                     NodoActual.Anterior = nuevoNodoACrear; //Por último terminamos de enlazar la refrencia del anterior al nodo actual como el nuevo nodo creado.
                 }
             }
-
             contador++; // Aumentar el contador de elementos
         }
 
@@ -145,7 +145,7 @@ namespace miLibreriaDeClases
             }
             else if (NodoActual == ultimo) //Si el nodo estuviera de último
             {
-                ultimo = NodoActual.Anterior;
+                ultimo = NodoActual.Anterior; //Retrocedemos una referencia atrás para eliminar ese nodo.
                 if (ultimo != null)
                 {
                     ultimo.siguiente = null;
@@ -163,46 +163,42 @@ namespace miLibreriaDeClases
             return true;
         }
 
-        public int GetMiddle()
+        public int GetMiddle() //Método encargado de calcular el elemento central.
         {
             if (head == null)
             {
                 throw new InvalidOperationException("La lista está vacía.");
             }
 
-            // Si el contador es par, se ajusta para redondear hacia arriba
+            //Cálculo del elemento del centro por medio de la fórmula usada en los algoritmos de búsqueda.
             int IndiceMedio = (contador + 1) / 2;
 
-            DoubleLinkedListNodo? NodoActual = head;
+            DoubleLinkedListNodo? NodoActual = head; //Copia del valor de head para poder iterar..
             
-            for (int i = 1; i < IndiceMedio; i++) // Menos 1 para poder 
+            for (int i = 1; i < IndiceMedio; i++) //Iteramos desde el inicio hasta el valor del pivote central que se calculó.
             {
                 if (NodoActual == null)return -1; //Para evitar null exeption
                 NodoActual = NodoActual.siguiente;
             }
             if (NodoActual == null)return -1; //Para evitar null exeption
             Console.WriteLine("El centro de la lista es: ");
-            Console.WriteLine(NodoActual.valor);
+            Console.WriteLine(NodoActual.valor); //Imprimimos el valor de "Indice" donde quedó el NodoActual gracias al for.
             return NodoActual.valor;
         }
 
-        public void MergeSorted(ListaDobleEnlazada listA, ListaDobleEnlazada listB, SortDirection direction)
+        public void MergeSorted(ListaDobleEnlazada listB, SortDirection direction)
         {
-            //Mezclar lista B en lista A
-
-            //Comprobamos que ambas listas existan
-            if (listA == null)
+            if(this == null)
             {
                 throw new ArgumentNullException("La lista1 es nula, no se puede mezclar");
             }
-
             if (listB == null)
             {
                 throw new ArgumentNullException("La lista2 es nula, no se puede mezclar");
             }
 
-            //Sacamos las referencias de las cabezas de ambas listas, esto con el fin de poder avanzar hasta el final de cada una.
-            DoubleLinkedListNodo? nodoActualListaA = listA.head;
+            //Sacamos las referencias de las cabezas de ambas listas, esto con el fin de poder avanzar hasta el final de cada una por medio de algún ciclo iterativo.
+            DoubleLinkedListNodo? nodoActualListaA = this.head;
             DoubleLinkedListNodo? nodoActualListaB = listB.head;
 
             //Creamos una lista temporal para poder ir agregando los elementos ordenanos(Se hace así para tener más versatilidad a la hora de hacer ascendente o descendente)
@@ -213,21 +209,16 @@ namespace miLibreriaDeClases
             {
                 if (nodoActualListaA == null || nodoActualListaB == null) return; // Para evitar un error de null.
 
-                if(nodoActualListaA.valor <= nodoActualListaB.valor)
+                if(nodoActualListaA.valor <= nodoActualListaB.valor) //Caso donde el valor de ListaA es menor o igual al de la lista B, entonces insertamos en orden en la lista temporal.
                 {
                     listaTemporal.InsertInOrder(nodoActualListaA.valor);
                     nodoActualListaA = nodoActualListaA.siguiente;
                 }
-                else
+                else //Si es al revez, entonces insertamos en orden el valor de la listaB
                 {
                     listaTemporal.InsertInOrder(nodoActualListaB.valor);
                     nodoActualListaB = nodoActualListaB.siguiente;
                 }
-            }
-
-            if (direction == SortDirection.Descendente) // En caso de que se quiera descendente, luego de que se ordena, se invierte.
-            {  
-                listaTemporal.InvertirLista();
             }
 
             //En caso de que una de las listas sea más larga que la otra, es decir el proceso termine antes, entonces agregamos el resto de elementos restantes.
@@ -242,19 +233,24 @@ namespace miLibreriaDeClases
                 nodoActualListaB = nodoActualListaB.siguiente;
             }
 
-            listA.head = null; //Limpiamos la lista A antes de pasarle todos los elementos ya mezclados y ordenados.
+            if (direction == SortDirection.Descendente) // En caso de que se quiera descendente, luego de que se ordena, se invierte.
+            {  
+                listaTemporal.InvertirLista();
+            }
+
+            this.head = null; //Limpiamos la lista A antes de pasarle todos los elementos ya mezclados y ordenados.
             DoubleLinkedListNodo? nodoActualDeLaListaTemporal = listaTemporal.head;
 
             while (nodoActualDeLaListaTemporal != null)
             {
-                listA.InsertInOrder(nodoActualDeLaListaTemporal.valor);
+                this.InsertInOrder(nodoActualDeLaListaTemporal.valor);
                 nodoActualDeLaListaTemporal = nodoActualDeLaListaTemporal.siguiente;
             }
 
-            //reasignamos las referencias para la lista 1
-            listA.head = listaTemporal.head;
-            listA.ultimo = listaTemporal.ultimo;
-            listA.contador = listaTemporal.contador;
+            //reasignamos las referencias para la lista A.
+            this.head = listaTemporal.head;
+            this.ultimo = listaTemporal.ultimo;
+            this.contador = listaTemporal.contador;
         }
 
         public void ImprimirLista()

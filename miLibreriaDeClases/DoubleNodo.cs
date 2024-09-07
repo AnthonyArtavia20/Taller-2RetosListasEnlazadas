@@ -11,6 +11,7 @@ namespace miLibreriaDeClases
 
         public DoubleLinkedListNodo(int valor)
         {
+            //Aquí se inicializan las referencias.
             this.valor = valor;
             this.siguiente = null;
             this.Anterior = null;

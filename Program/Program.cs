@@ -32,9 +32,8 @@ public class Program
         lista2.InsertInOrder(2);
         lista2.InsertInOrder(3);
 
-        lista1.MergeSorted(lista1,lista2,SortDirection.Ascendente);
+        lista1.MergeSorted(lista2,SortDirection.Ascendente);
 
         lista1.ImprimirLista();
-        lista1.GetMiddle();
     }
 }

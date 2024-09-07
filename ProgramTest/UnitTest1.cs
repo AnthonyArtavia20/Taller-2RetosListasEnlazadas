@@ -88,7 +88,7 @@ public class UnitTest1
             listB.InsertInOrder(4);
             listB.InsertInOrder(6);
 
-            listA.MergeSorted(listA, listB, SortDirection.Ascendente);
+            listA.MergeSorted(listB, SortDirection.Ascendente);
 
             Assert.AreEqual(1, listA.DeleteFirst());
             Assert.AreEqual(2, listA.DeleteFirst());
